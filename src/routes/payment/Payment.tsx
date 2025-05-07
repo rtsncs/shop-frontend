@@ -41,17 +41,17 @@ function Payment() {
       <h2>Total: ${cart.reduce((total, item) => total + item.price, 0)}</h2>
       <form onSubmit={handlePayment}>
         <label>
-          Card Number:
+          <p>Card Number:</p>
           <input type="text" name="cardNumber" required />
         </label>
         <br />
         <label>
-          Expiration Date:
+          <p>Expiration Date:</p>
           <input type="text" name="expirationDate" required />
         </label>
         <br />
         <label>
-          CVV:
+          <p>CVV:</p>
           <input type="text" name="cvv" required />
         </label>
         <br />

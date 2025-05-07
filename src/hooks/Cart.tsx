@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import Product from "../models/Product";
 
 interface Cart {
@@ -9,16 +9,22 @@ interface Cart {
 
 const CartContext = createContext<Cart | null>(null);
 
-function CartProvider({ children }: { children: React.ReactNode }) {
+function CartProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [cart, setCart] = useState<Product[]>([]);
 
-  const addToCart = (item: Product) => {
-    setCart((prevCart) => [...prevCart, item]);
-  };
+  const addToCart = useMemo(
+    () => (item: Product) => {
+      setCart((prevCart) => [...prevCart, item]);
+    },
+    [],
+  );
 
-  const removeFromCart = (id: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-  };
+  const removeFromCart = useMemo(
+    () => (id: number) => {
+      setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    },
+    [],
+  );
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
