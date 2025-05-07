@@ -1,3 +1,9 @@
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rtsncs_shop-frontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rtsncs_shop-frontend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rtsncs_shop-frontend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rtsncs_shop-frontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rtsncs_shop-frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=rtsncs_shop-frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=rtsncs_shop-frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=rtsncs_shop-frontend)
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
