@@ -12,24 +12,20 @@ const CartContext = createContext<Cart | null>(null);
 function CartProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [cart, setCart] = useState<Product[]>([]);
 
-  const addToCart = useMemo(
-    () => (item: Product) => {
-      setCart((prevCart) => [...prevCart, item]);
-    },
-    [],
-  );
+  const addToCart = (item: Product) => {
+    setCart((prevCart) => [...prevCart, item]);
+  };
 
-  const removeFromCart = useMemo(
-    () => (id: number) => {
-      setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-    },
-    [],
-  );
+  const removeFromCart = (id: number) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
+  const context = useMemo(() => {
+    return { cart, addToCart, removeFromCart };
+  }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={context}>{children}</CartContext.Provider>
   );
 }
 
