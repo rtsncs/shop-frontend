@@ -7,7 +7,10 @@ import ProductsLoader from "./routes/products/ProductsLoader";
 import Payment from "./routes/payment/Payment";
 import Cart from "./routes/cart/Cart";
 import { CartProvider } from "./hooks/Cart";
+import { AuthProvider } from "./hooks/Auth";
 import App from "./App";
+import Login from "./routes/user/Login";
+import Register from "./routes/user/Register";
 
 const router = createBrowserRouter([
   {
@@ -27,14 +30,24 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </AuthProvider>
   </StrictMode>,
 );
